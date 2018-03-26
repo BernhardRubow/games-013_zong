@@ -10,6 +10,7 @@ namespace newvisionsproject.zong {
     public float MaxHorizontalOffset;
     public Vector3 Direction;
     public float Speed;
+    public ParticleSystem Sparks;
 
 
 
