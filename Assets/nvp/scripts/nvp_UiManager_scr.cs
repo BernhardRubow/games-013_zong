@@ -3,29 +3,36 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using newvisionsproject.managers.events;
-
+using System;
 
 public class nvp_UiManager_scr : MonoBehaviour
 {
 
   // +++ Fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   [SerializeField] Text debugMessage;
+  [SerializeField] Text playerOneScoreDisplay;
+  [SerializeField] Text playerTwoScoreDisplay;
+
+
+
 
   // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   void Start()
   {
-    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(
-        GameEvents.onDebugMessage,
-        onDebugMessage
-    );
-
-
+    // subscribe to events 
+    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onDebugMessage, onDebugMessage);
+    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onPlayerScored, onPlayerScored);
   }
 
 
 
 
   // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  void onPlayerScored(object sender, object eventArgs){
+    PlayerScore playerScore = (PlayerScore)eventArgs;
+    ShowScore(playerScore);
+  }
+
   void onDebugMessage(object sender, object eventArgs)
   {
     if (debugMessage == null)
@@ -35,7 +42,16 @@ public class nvp_UiManager_scr : MonoBehaviour
     }
 
     debugMessage.text = eventArgs.ToString();
-
   }
 
+
+
+
+  // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  void ShowScore(PlayerScore playerScore){
+    if(playerScore.PlayerNo == 1)
+      playerOneScoreDisplay.text = playerScore.Score.ToString("00");
+    else
+      playerTwoScoreDisplay.text = playerScore.Score.ToString("00");
+  }
 }

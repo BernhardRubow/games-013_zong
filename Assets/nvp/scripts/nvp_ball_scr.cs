@@ -129,6 +129,11 @@ namespace newvisionsproject.zong {
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
 
         if(Mathf.Abs(transform.position.y)> 25){
+
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallOutOfBounds, this, this.transform.position.y);
+
+          // reset position
+          // TODO: Add extra state
           transform.position = Vector3.zero;
         }
       } 
