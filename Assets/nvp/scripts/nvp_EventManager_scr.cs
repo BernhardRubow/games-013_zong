@@ -25,9 +25,16 @@ namespace newvisionsproject.managers.events
 
 
     void Awake()
-    {
-      eventCallbacks = new Dictionary<GameEvents, List<Action<object, object>>>();
-      nvp_EventManager_scr.INSTANCE = this;
+    {      
+      if (nvp_EventManager_scr.INSTANCE != null)
+      {
+        Destroy(this.gameObject);
+      }
+      else
+      {
+        nvp_EventManager_scr.INSTANCE = this;
+        eventCallbacks = new Dictionary<GameEvents, List<Action<object, object>>>();
+      }
     }
 
     public void Test(int i)
@@ -58,7 +65,7 @@ namespace newvisionsproject.managers.events
     public void InvokeEvent(GameEvents e, object sender, object eventArgs)
     {
       if (!eventCallbacks.ContainsKey(e)) return;
-      // Debug.Log (e.ToString());
+      
       foreach (var observer in eventCallbacks[e])
         observer(sender, eventArgs);
     }
