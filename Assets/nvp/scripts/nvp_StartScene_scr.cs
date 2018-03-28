@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class nvp_StartScene_scr : MonoBehaviour {
 
+	[SerializeField] Transform _mainImage;
+	[SerializeField] float _rotationSpeed;
+ 
 	// Use this for initialization
 	void Start () {
 		
@@ -16,5 +19,8 @@ public class nvp_StartScene_scr : MonoBehaviour {
 		if(Input.touchCount > 0){
 			SceneManager.LoadScene("game");
 		}
+
+
+		_mainImage.Rotate(Vector3.forward, _rotationSpeed * Mathf.Sin(Time.realtimeSinceStartup/2) * Time.deltaTime);
 	}
 }
