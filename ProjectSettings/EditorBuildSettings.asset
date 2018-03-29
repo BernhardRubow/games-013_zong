@@ -11,3 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/nvp/scenes/game.unity
     guid: 5b2ce8b7162e25a4d810327164f3561a
+  - enabled: 1
+    path: Assets/nvp/scenes/playerOneWins.unity
+    guid: 8f694c74cfd4a864fa838c324a51ffef
+  - enabled: 1
+    path: Assets/nvp/scenes/playerTwoWins.unity
+    guid: 6e2d25e07b3441646adc842057250da4

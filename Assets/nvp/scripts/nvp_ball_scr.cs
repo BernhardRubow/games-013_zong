@@ -99,9 +99,6 @@ namespace newvisionsproject.zong {
       direction.Normalize();
     }
     void OnBallHitsWall(object sender, object eventArgs){
-      // var pos = transform.position;
-      // pos.x = maxHorizontalOffset * Mathf.Sign(pos.x);
-      // transform.position = pos;
       direction.x *= -1;
     }
 

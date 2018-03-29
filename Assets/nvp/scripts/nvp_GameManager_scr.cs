@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using newvisionsproject.managers.events;
 
 public class nvp_GameManager_scr : MonoBehaviour {
@@ -42,6 +43,10 @@ public class nvp_GameManager_scr : MonoBehaviour {
 		ScorePlayer(scoringPlayer);
 	}	
 
+
+
+
+	// +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	void ScorePlayer(int playerNo){
 
 		var playerScore = new PlayerScore();
@@ -60,8 +65,25 @@ public class nvp_GameManager_scr : MonoBehaviour {
         break;
     }
 
+		CheckForWinningCondition();
+
 		nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onPlayerScored, this, playerScore);
   }	
+
+	void CheckForWinningCondition(){
+		if(playerOneScrore >= 1 || playerTwoScore >= 1){
+			// possible winnig condition
+			if(Mathf.Abs(playerOneScrore - playerTwoScore) >= 2){
+				// one player has at least 2 or more point than the other
+				if(playerOneScrore > playerTwoScore){
+					SceneManager.LoadScene("playerOneWins");
+				}
+				else{
+					SceneManager.LoadScene("playerTwoWins");
+				}
+			}
+		}
+	}
 }
 
 
