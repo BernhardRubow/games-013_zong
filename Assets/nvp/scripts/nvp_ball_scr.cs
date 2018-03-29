@@ -30,6 +30,7 @@ namespace newvisionsproject.zong {
     }
     
     void Update () {
+      // update the currently assigned state 
       state.Tick();
     }
 
@@ -41,7 +42,7 @@ namespace newvisionsproject.zong {
 
 
 
-    // +++ functions ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     Dictionary<string, IState> CreateStates(GameObject go){
       var s = new Dictionary<string, IState>();
 
@@ -93,7 +94,9 @@ namespace newvisionsproject.zong {
 
     // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     void OnBallHitsPlayer(object sender, object eventArgs){
-      direction.y *= -1;
+      direction.y = Mathf.Sign(direction.y) * -1;
+      direction.x = Random.Range(-2.0f, 2.0f);
+      direction.Normalize();
     }
     void OnBallHitsWall(object sender, object eventArgs){
       // var pos = transform.position;
