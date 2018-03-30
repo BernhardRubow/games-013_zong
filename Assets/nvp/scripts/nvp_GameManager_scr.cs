@@ -7,14 +7,16 @@ using newvisionsproject.managers.events;
 public class nvp_GameManager_scr : MonoBehaviour {
 
 	// +++ inspector fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-	[SerializeField] int playerOneScrore;
-	[SerializeField] int playerTwoScore;
+	
+	[SerializeField] gameConfig gameConfig;
 
 
 
 
 	// +++ private fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	private ScoringHelper scoringHelper;
+	int playerOneScrore;
+	int playerTwoScore;
 
 
 
@@ -71,7 +73,7 @@ public class nvp_GameManager_scr : MonoBehaviour {
   }	
 
 	void CheckForWinningCondition(){
-		if(playerOneScrore >= 1 || playerTwoScore >= 1){
+		if(playerOneScrore >= gameConfig.WinningScore || playerTwoScore >= gameConfig.WinningScore){
 			// possible winnig condition
 			if(Mathf.Abs(playerOneScrore - playerTwoScore) >= 2){
 				// one player has at least 2 or more point than the other
