@@ -13,7 +13,10 @@ namespace newvisionsproject.managers.events
     onBallOutOfBounds,
     onBallReleased,
     onPlayerScored,
-    onDebugMessage
+    onDebugMessage,
+    onBallChangedDirection,
+    onHitPowerUpSpawner,
+    onSpawnPowerUp
   }
 
   public class nvp_EventManager_scr : MonoBehaviour

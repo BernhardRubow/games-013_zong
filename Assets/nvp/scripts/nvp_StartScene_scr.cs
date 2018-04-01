@@ -15,7 +15,6 @@ public class nvp_StartScene_scr : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(Input.touchCount);
 		if(Input.touchCount > 0){
 			SceneManager.LoadScene("game");
 		}

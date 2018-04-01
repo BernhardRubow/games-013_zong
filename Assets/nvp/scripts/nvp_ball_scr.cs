@@ -52,8 +52,17 @@ namespace newvisionsproject.zong
 
     void OnTriggerEnter(Collider other)
     {
-      if (other.tag == "wall") nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsWall, this, null);
-      if (other.tag == "player") nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsPlayer, this, null);
+      switch(other.tag){
+        case "wall":
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsWall, this, null);
+        break;
+        case "player":
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsPlayer, this, null);
+        break;
+        case "powerUpSpawner":
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onHitPowerUpSpawner, this, null);
+        break;
+      }      
     }
 
 
@@ -70,15 +79,4 @@ namespace newvisionsproject.zong
       return s;
     }
   }
-
-
-
-
-  // +++ states +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  
-
-
-
-
-
 }

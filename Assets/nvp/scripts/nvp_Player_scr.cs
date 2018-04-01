@@ -49,15 +49,16 @@ public class nvp_Player_scr : MonoBehaviour
       {
         input = Input.GetTouch(i).position;
         if (Input.GetTouch(i).position.y > 1250){
-          upperPlayerXInput = Camera.main.ScreenToWorldPoint(input);  
+          upperPlayerXInput = Camera.main.ScreenToWorldPoint(new Vector3(input.x, input.y, Camera.main.farClipPlane));  
         }
         else
         {
-          lowerPlayerXInput = Camera.main.ScreenToWorldPoint(input);  
+          lowerPlayerXInput = Camera.main.ScreenToWorldPoint(new Vector3(input.x, input.y, Camera.main.farClipPlane));  
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onDebugMessage, this, Camera.main.ScreenToWorldPoint(input));
         }
       }
     }
-
+    
     playerTick();
   }
 

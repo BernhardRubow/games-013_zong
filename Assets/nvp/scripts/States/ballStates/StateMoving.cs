@@ -25,7 +25,7 @@ namespace newvisionsproject.states.ball
 
     // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     public StateMoving(GameObject go)
-    {
+    {     
       // get observed component
       ballScript = go.GetComponent<nvp_Ball_scr>();
 
@@ -42,11 +42,26 @@ namespace newvisionsproject.states.ball
 
 
     // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    void OnHitPowerUpSpawner(object sender, object eventArgs){
+      nvp_EventManager_scr.INSTANCE.InvokeEvent(
+        GameEvents.onSpawnPowerUp, 
+        this, 
+        new ArrayList{
+          this.speed, 
+          this.direction,
+          this.transform.position
+          });
+    }
+
+
     void OnBallHitsPlayer(object sender, object eventArgs)
     {
       direction.y = Mathf.Sign(direction.y) * -1;
       direction.x = Random.Range(-2.0f, 2.0f);
       direction.Normalize();
+
+      // inform all interested subscriber, that the ball has change its direction
+      nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallChangedDirection, this, direction);
       speed += 0.2f;
     }
     void OnBallHitsWall(object sender, object eventArgs)
@@ -79,6 +94,7 @@ namespace newvisionsproject.states.ball
       // subscribe to interesting events
       nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
       nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
+      nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onHitPowerUpSpawner, OnHitPowerUpSpawner);
 
       // randomize starting direction
       direction = new Vector3(
@@ -107,6 +123,7 @@ namespace newvisionsproject.states.ball
       // unsubscribe form former subscribtions to particular events
       nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
       nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
+      nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onHitPowerUpSpawner, OnHitPowerUpSpawner);
 
       // get the next state and return it to provide
       // fluent configuration
