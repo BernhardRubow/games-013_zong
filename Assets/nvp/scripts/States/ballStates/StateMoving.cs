@@ -62,7 +62,7 @@ namespace newvisionsproject.states.ball
 
       // inform all interested subscriber, that the ball has change its direction
       nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallChangedDirection, this, direction);
-      speed += 0.2f;
+      speed += 1f;
     }
     void OnBallHitsWall(object sender, object eventArgs)
     {
