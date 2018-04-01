@@ -17,22 +17,10 @@ namespace newvisionsproject.zong
     public Vector3 Direction;
     public float Speed;
     public ParticleSystem Sparks;
-    public ballConfig ballConfig;
-
-
-
-
-    // +++ private fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    
-    private System.Action stateTick;
-    private float speedCopy;
-
-
-
-
-    // +++ public fields ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public ballConfig ballConfig;  
     public IBallState State;
     public Dictionary<BallStates, IBallState> States;
+    
 
 
 

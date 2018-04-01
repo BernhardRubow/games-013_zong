@@ -7,10 +7,13 @@ public class nvp_StartScene_scr : MonoBehaviour {
 
 	[SerializeField] Transform _mainImage;
 	[SerializeField] float _rotationSpeed;
+	[SerializeField] AudioClip[] backgroundMusics;
  
 	// Use this for initialization
 	void Start () {
-		
+		var source = this.GetComponent<AudioSource>();
+		source.clip = backgroundMusics[Random.Range(0, backgroundMusics.Length)];
+		source.Play();
 	}
 	
 	// Update is called once per frame

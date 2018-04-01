@@ -60,9 +60,8 @@ namespace newvisionsproject.states.ball
       direction.x = Random.Range(-2.0f, 2.0f);
       direction.Normalize();
 
-      // inform all interested subscriber, that the ball has change its direction
-      nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallChangedDirection, this, direction);
-      speed += 1f;
+      
+      speed += 1f;   
     }
     void OnBallHitsWall(object sender, object eventArgs)
     {
