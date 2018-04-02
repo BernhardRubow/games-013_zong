@@ -12,6 +12,8 @@ public class nvp_UiManager_scr : MonoBehaviour
   [SerializeField] Text debugMessage;
   [SerializeField] Text playerOneScoreDisplay;
   [SerializeField] Text playerTwoScoreDisplay;
+  [SerializeField] ParticleSystem upperPlayerScoreEffect;
+  [SerializeField] ParticleSystem lowerPlayerScoreEffect;
 
 
 
@@ -50,8 +52,14 @@ public class nvp_UiManager_scr : MonoBehaviour
   // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
   void ShowScore(PlayerScore playerScore){
     if(playerScore.PlayerNo == 1)
+    {
       playerOneScoreDisplay.text = playerScore.Score.ToString("00");
+      lowerPlayerScoreEffect.Play();
+    }
     else
+    {
       playerTwoScoreDisplay.text = playerScore.Score.ToString("00");
+      upperPlayerScoreEffect.Play();
+    }
   }
 }
