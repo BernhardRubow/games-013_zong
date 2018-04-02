@@ -4,62 +4,81 @@ using UnityEngine;
 using UnityEngine.UI;
 using newvisionsproject.managers.events;
 using System;
+using System.Linq;
+using newvisionsproject.zong.interfaces;
 
-public class nvp_UiManager_scr : MonoBehaviour
+namespace newvisionsproject.zong
 {
 
-  // +++ Fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  [SerializeField] Text debugMessage;
-  [SerializeField] Text playerOneScoreDisplay;
-  [SerializeField] Text playerTwoScoreDisplay;
-  [SerializeField] ParticleSystem upperPlayerScoreEffect;
-  [SerializeField] ParticleSystem lowerPlayerScoreEffect;
 
-
-
-
-  // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  void Start()
+  public class nvp_UiManager_scr : MonoBehaviour
   {
-    // subscribe to events 
-    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onDebugMessage, onDebugMessage);
-    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onPlayerScored, onPlayerScored);
-  }
+
+    // +++ Fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    [SerializeField] Text debugMessage;
+    [SerializeField] Text playerOneScoreDisplay;
+    [SerializeField] Text playerTwoScoreDisplay;
+    [SerializeField] GameObject[] lowerPlayerScoreEffectsHolder;
+    [SerializeField] GameObject[] upperPlayerScoreEffectsHolder;
+
+    // +++ private +++
+    private List<IEffect> lowerPlayerScoreEffects = new List<IEffect>();
+    private List<IEffect> upperPlayerScoreEffects= new List<IEffect>();
 
 
-
-
-  // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  void onPlayerScored(object sender, object eventArgs){
-    PlayerScore playerScore = (PlayerScore)eventArgs;
-    ShowScore(playerScore);
-  }
-
-  void onDebugMessage(object sender, object eventArgs)
-  {
-    if (debugMessage == null)
+    // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    void Start()
     {
-      debugMessage = GameObject.Find("debugMessage").GetComponent<Text>();
-      if (debugMessage == null) Debug.LogError("uiManager: no debug message text found");
+      // subscribe to events 
+      nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onDebugMessage, onDebugMessage);
+      nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onPlayerScored, onPlayerScored);
+
+      // grab interface because you can reference interfaces in inspector
+      foreach(var item in lowerPlayerScoreEffectsHolder) lowerPlayerScoreEffects.Add(item.GetComponent<IEffect>());
+      foreach(var item in upperPlayerScoreEffectsHolder) upperPlayerScoreEffects.Add(item.GetComponent<IEffect>());
     }
 
-    debugMessage.text = eventArgs.ToString();
-  }
 
 
 
-
-  // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-  void ShowScore(PlayerScore playerScore){
-    if(playerScore.PlayerNo == 1)
+    // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    void onPlayerScored(object sender, object eventArgs)
     {
-      playerOneScoreDisplay.text = playerScore.Score.ToString("00");
-      lowerPlayerScoreEffect.Play();
+      PlayerScore playerScore = (PlayerScore)eventArgs;
+      ShowScore(playerScore);
     }
-    else
+
+    void onDebugMessage(object sender, object eventArgs)
     {
-      playerTwoScoreDisplay.text = playerScore.Score.ToString("00");
-      upperPlayerScoreEffect.Play();
+      if (debugMessage == null)
+      {
+        debugMessage = GameObject.Find("debugMessage").GetComponent<Text>();
+        if (debugMessage == null) Debug.LogError("uiManager: no debug message text found");
+      }
+
+      debugMessage.text = eventArgs.ToString();
+    }
+
+
+
+
+    // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    void ShowScore(PlayerScore playerScore)
+    {
+      if (playerScore.PlayerNo == 1)
+      {
+        playerOneScoreDisplay.text = playerScore.Score.ToString("00");
+        
+        // play all score effects for lower player
+        foreach(IEffect effect in lowerPlayerScoreEffects) effect.Play();
+      }
+      else
+      {
+        playerTwoScoreDisplay.text = playerScore.Score.ToString("00");
+
+        // play all score effects for upper player
+        foreach(IEffect effect in upperPlayerScoreEffects) effect.Play();
+      }
     }
   }
 }
