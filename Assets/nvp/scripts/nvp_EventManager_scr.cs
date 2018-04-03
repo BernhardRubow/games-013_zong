@@ -9,15 +9,11 @@ namespace newvisionsproject.managers.events
   {
     onBallHitsPlayer,
     onBallHitsWall,
-    onPlayerHitsWall,
     onBallOutOfBounds,
-    onBallReleased,
     onPlayerScored,
     onDebugMessage,
     onHitPowerUpSpawner,
     onSpawnPowerUp,
-    onBallChangedSpeed,
-    onPlayWallHitSound
   }
 
   public class nvp_EventManager_scr : MonoBehaviour

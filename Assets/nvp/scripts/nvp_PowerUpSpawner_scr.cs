@@ -24,12 +24,10 @@ namespace newvisionsproject.zong
     void Start()
     {
       // subscribe to events
-      nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onSpawnPowerUp, OnSpawnPowerUp);
     }
+      
 
     // +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    void OnSpawnPowerUp(object sender, object eventArgs)
-    {
-    }
+    
   }
 }

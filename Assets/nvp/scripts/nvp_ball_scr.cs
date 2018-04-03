@@ -13,11 +13,7 @@ namespace newvisionsproject.zong
   {
 
     // +++ public fields ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    public float MaxHorizontalOffset;
-    public Vector3 Direction;
-    public float Speed;
-    public ParticleSystem Sparks;
-    public ballConfig ballConfig;  
+    public BallConfig ballConfig;  
     public IBallState State;
     public Dictionary<BallStates, IBallState> States;
     
@@ -28,7 +24,7 @@ namespace newvisionsproject.zong
     // +++ unity callbacks ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     void Start()
     {
-      States = CreateStates(this.gameObject);
+      States = CreateStates();
       State = States[BallStates.outOfBounds].SetAsNextState();
     }
 
@@ -57,12 +53,13 @@ namespace newvisionsproject.zong
 
 
     // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    Dictionary<BallStates, IBallState> CreateStates(GameObject go)
+    Dictionary<BallStates, IBallState> CreateStates()
     {
       var s = new Dictionary<BallStates, IBallState>();
 
-      s.Add(BallStates.Moving, new StateMoving(go));
-      s.Add(BallStates.outOfBounds, new StateOutOfBounds(go));
+      // fill states
+      s.Add(BallStates.Moving, IBallStateFactory.CreateState(BallStates.Moving, this.gameObject));
+      s.Add(BallStates.outOfBounds, IBallStateFactory.CreateState(BallStates.outOfBounds, this.gameObject));
 
       return s;
     }

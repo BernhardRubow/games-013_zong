@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName="Zong/Configuration/Ball")]
-public class ballConfig : ScriptableObject {
+public class BallConfig : ScriptableObject {
 
+	public float startSpeed;
 	public float SpeedChange;
 	
 }
