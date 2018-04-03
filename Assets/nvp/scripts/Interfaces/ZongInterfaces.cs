@@ -7,4 +7,9 @@ namespace newvisionsproject.zong.interfaces{
 	{
 		void Play();
 	}
+
+	public interface IPlayerInput
+	{
+		float GetTargetXPosition();
+	}
 }
