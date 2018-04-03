@@ -6,7 +6,7 @@ using newvisionsproject.zong.interfaces;
 
 namespace newvisionsproject.zong
 {
-  public class nvp_Player_scr : MonoBehaviour
+  public class nvp_PlayerMove_scr : MonoBehaviour
   {
     // +++ fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
    
@@ -26,12 +26,9 @@ namespace newvisionsproject.zong
       desiredPosition.x = playerInput.GetTargetXPosition();
       desiredPosition.y = transform.position.y;
 
-      Debug.Log(desiredPosition);
-
       // move the player in the scene
       //transform.position = Vector3.Lerp(transform.position, desiredPosition, Time.deltaTime * 2);
       transform.position = desiredPosition;
-      Debug.Log(transform.position);
     }
   }
 }
