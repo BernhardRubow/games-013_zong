@@ -8,8 +8,9 @@ namespace newvisionsproject.zong.gamelogic
 	{
 		public static Vector3 GetRandomDirection()
 		{
+
 			var v2 = Random.insideUnitCircle;
-			var v3 = new Vector3(v2.x, v2.y, 0).normalized;
+			var v3 = new Vector3(v2.x, 1f * Mathf.Sign(Random.value -0.5f), 0f).normalized;
 			return v3;
 		}
 

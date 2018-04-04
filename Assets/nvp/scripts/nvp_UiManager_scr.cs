@@ -45,7 +45,7 @@ namespace newvisionsproject.zong
     void onPlayerScored(object sender, object eventArgs)
     {
       PlayerScore playerScore = (PlayerScore)eventArgs;
-      ShowScore(playerScore);
+      StartCoroutine(ShowScore(playerScore, 2.5f));
     }
 
     void onDebugMessage(object sender, object eventArgs)
@@ -63,8 +63,10 @@ namespace newvisionsproject.zong
 
 
     // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    void ShowScore(PlayerScore playerScore)
+    IEnumerator ShowScore(PlayerScore playerScore, float delay)
     {
+      yield return new WaitForSeconds(delay);
+
       if (playerScore.PlayerNo == 1)
       {
         playerOneScoreDisplay.text = playerScore.Score.ToString("00");
