@@ -67,6 +67,8 @@ namespace newvisionsproject.zong
     {
       yield return new WaitForSeconds(delay);
 
+      nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onPlayScoringSound, this, null);
+
       if (playerScore.PlayerNo == 1)
       {
         playerOneScoreDisplay.text = playerScore.Score.ToString("00");

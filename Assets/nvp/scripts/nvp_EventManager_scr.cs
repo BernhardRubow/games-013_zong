@@ -14,6 +14,7 @@ namespace newvisionsproject.managers.events
     onDebugMessage,
     onHitPowerUpSpawner,
     onSpawnPowerUp,
+    onPlayScoringSound,
   }
 
   public class nvp_EventManager_scr : MonoBehaviour
