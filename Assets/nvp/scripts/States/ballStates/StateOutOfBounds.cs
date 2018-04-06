@@ -15,6 +15,7 @@ namespace newvisionsproject.states.ball
     Transform transform;
     System.Action action;
     nvp_Ball_scr ballScript;
+    BallConfig ballConfig;
     float originalSpeed;
 
 
@@ -26,6 +27,7 @@ namespace newvisionsproject.states.ball
       // collect references and store them localy
       // for ease of use
       ballScript = go.GetComponent<nvp_Ball_scr>();
+      ballConfig = ballScript.ballConfig;
       transform = ballScript.transform;
     }
 
@@ -76,7 +78,7 @@ namespace newvisionsproject.states.ball
 
     // +++ coroutines +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     IEnumerator Idle(){
-      yield return new WaitForSeconds(1);
+      yield return new WaitForSeconds(ballConfig.TimeUntilNewBallStarts);
 
       // do state transition
       ballScript.State = OnExitTo(BallStates.Moving).SetAsNextState();
