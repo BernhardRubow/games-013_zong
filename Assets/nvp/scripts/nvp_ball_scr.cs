@@ -13,9 +13,11 @@ namespace newvisionsproject.zong
   {
 
     // +++ public fields ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    public BallStates initialState;    
     public BallConfig ballConfig;  
     public IBallState State;
     public Dictionary<BallStates, IBallState> States;
+
     
 
 
@@ -25,7 +27,7 @@ namespace newvisionsproject.zong
     void Start()
     {
       States = CreateStates();
-      State = States[BallStates.outOfBounds].SetAsNextState();
+      State = States[initialState].SetAsNextState();
     }
 
     void Update()

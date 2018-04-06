@@ -51,6 +51,11 @@ namespace newvisionsproject.states.ball
       currentDirection.x *= -1;
     }
 
+    void OnChangeDirectionByEvent(object sender, object eventArgs){
+      this.currentDirection = (Vector3)eventArgs;        
+      this.currentDirection.Normalize();
+    }
+
 
 
     // +++ interface methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -74,8 +79,11 @@ namespace newvisionsproject.states.ball
       currentSpeed = ballConfig.startSpeed;
 
       // subscribe to interesting events
-      nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
-      nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
+      if(nvp_EventManager_scr.INSTANCE != null) {
+        nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
+        nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
+        nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirection, OnChangeDirectionByEvent);
+      }
 
       // randomize starting direction
       currentDirection = DirectionLogic.GetRandomDirection();
@@ -98,9 +106,11 @@ namespace newvisionsproject.states.ball
       // do any cleanup here
 
       // unsubscribe form former subscribtions to particular events
-      nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
-      nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
-
+      if(nvp_EventManager_scr.INSTANCE != null){
+        nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
+        nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
+        nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onChangeDirection, OnChangeDirectionByEvent);
+      }
       // get the next state and return it to provide
       // fluent configuration
       return ballScript.States[nextState];
@@ -116,12 +126,15 @@ namespace newvisionsproject.states.ball
       if (Mathf.Abs(ballTransform.position.y) > 25)
       {
         // inform all interested subscribers, that a player has missed the ball 
-        nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallOutOfBounds, this, this.ballTransform.position.y);
+        if(nvp_EventManager_scr.INSTANCE != null){
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallOutOfBounds, this, this.ballTransform.position.y);
+        }
 
         // transition to next ball state
         ballScript.State = OnExitTo(BallStates.outOfBounds).SetAsNextState();
       }
-    }    
+    }     
+
   }
 }
 

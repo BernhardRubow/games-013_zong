@@ -8,6 +8,7 @@ TagManager:
   - wall
   - player
   - powerUpSpawner
+  - ballRange
   layers:
   - Default
   - TransparentFX
