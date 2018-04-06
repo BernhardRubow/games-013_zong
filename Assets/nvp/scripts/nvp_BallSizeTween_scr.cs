@@ -20,15 +20,21 @@ namespace newvisionsproject.zong.effects
 
 			// subscribe to events
 			nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirectionInStartScreen, (s, e) => {
-        ball.DOPunchScale(Vector3.one * 1.3f, 1f, 6, 0.25f);
+        DOTween.Kill(ball, true);
+        ball.DOPunchScale(Vector3.one * 1.3f, 1f, 6, 0.25f).OnComplete(()=>{ball.localScale = Vector3.one * 0.75f;});
+        ball.DORotate(Vector3.forward * 180 * Mathf.Sign(0.5f -Random.value) ,1f, RotateMode.Fast).OnComplete(()=>{ball.rotation = Quaternion.identity;});
       });
 
       nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, (s, e) => {
-        ball.DOPunchScale(Vector3.one * 1.3f, 1f, 6, 0.25f);
+        DOTween.Kill(ball, true);
+        ball.DOPunchScale(Vector3.one * 1.3f, 1f, 6, 0.25f).OnComplete(()=>{ball.localScale = Vector3.one * 0.75f;});
+        ball.DORotate(Vector3.forward * 180 * Mathf.Sign(0.5f -Random.value) ,1f, RotateMode.Fast).OnComplete(()=>{ball.rotation = Quaternion.identity;});
       });      
 
       nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, (s, e) => {
-        ball.DOPunchScale(Vector3.one * 1.3f, 1f, 6, 0.25f);
+        DOTween.Kill(ball, true);
+        ball.DOPunchScale(Vector3.one * 1.3f, 1f, 6, 0.25f).OnComplete(()=>{ball.localScale = Vector3.one * 0.75f;});
+        ball.DORotate(Vector3.forward * 180 * Mathf.Sign(0.5f -Random.value) ,1f, RotateMode.Fast).OnComplete(()=>{ball.rotation = Quaternion.identity;});
       });
     }
   }
