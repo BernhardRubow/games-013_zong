@@ -14,16 +14,21 @@ namespace newvisionsproject.zong
   public class nvp_UiManager_scr : MonoBehaviour
   {
 
-    // +++ Fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // +++ inspector fields  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     [SerializeField] Text debugMessage;
     [SerializeField] Text playerOneScoreDisplay;
     [SerializeField] Text playerTwoScoreDisplay;
     [SerializeField] GameObject[] lowerPlayerScoreEffectsHolder;
     [SerializeField] GameObject[] upperPlayerScoreEffectsHolder;
 
-    // +++ private +++
+
+
+
+    // +++ private fields +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     private List<IEffect> lowerPlayerScoreEffects = new List<IEffect>();
     private List<IEffect> upperPlayerScoreEffects= new List<IEffect>();
+
+
 
 
     // +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -33,7 +38,7 @@ namespace newvisionsproject.zong
       nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onDebugMessage, onDebugMessage);
       nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onPlayerScored, onPlayerScored);
 
-      // grab interface because you can reference interfaces in inspector
+      // grab interface from gameobject because you can't reference interfaces in inspector
       foreach(var item in lowerPlayerScoreEffectsHolder) lowerPlayerScoreEffects.Add(item.GetComponent<IEffect>());
       foreach(var item in upperPlayerScoreEffectsHolder) upperPlayerScoreEffects.Add(item.GetComponent<IEffect>());
     }
@@ -55,7 +60,6 @@ namespace newvisionsproject.zong
         debugMessage = GameObject.Find("debugMessage").GetComponent<Text>();
         if (debugMessage == null) Debug.LogError("uiManager: no debug message text found");
       }
-
       debugMessage.text = eventArgs.ToString();
     }
 

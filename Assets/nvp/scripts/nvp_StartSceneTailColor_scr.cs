@@ -33,7 +33,7 @@ public class nvp_StartSceneTailColor_scr : MonoBehaviour
     ballTailParticleSystem = temp.GetChild(0).GetComponent<ParticleSystem>().main;
 
     // subscribe to interesting events
-    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirection, onStartInvertDirection);
+    nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirectionInStartScreen, onStartInvertDirection);
 
   }
 

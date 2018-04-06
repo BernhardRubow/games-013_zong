@@ -50,10 +50,10 @@ namespace newvisionsproject.states.ball
     {   
       // reset position
       transform.position = Vector3.zero;
+      transform.localScale = Vector3.one * 0.75f;
 
       // start waiting for some amount of time
       ((MonoBehaviour)ballScript).StartCoroutine(Idle());
-
 
       // internal state change
       action = OnUpdate;

@@ -82,7 +82,7 @@ namespace newvisionsproject.states.ball
       if(nvp_EventManager_scr.INSTANCE != null) {
         nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
         nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
-        nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirection, OnChangeDirectionByEvent);
+        nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirectionInStartScreen, OnChangeDirectionByEvent);
       }
 
       // randomize starting direction
@@ -109,7 +109,7 @@ namespace newvisionsproject.states.ball
       if(nvp_EventManager_scr.INSTANCE != null){
         nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
         nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
-        nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onChangeDirection, OnChangeDirectionByEvent);
+        nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onChangeDirectionInStartScreen, OnChangeDirectionByEvent);
       }
       // get the next state and return it to provide
       // fluent configuration

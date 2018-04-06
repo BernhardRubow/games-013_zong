@@ -19,7 +19,7 @@ namespace newvisionsproject.zong
 
       // invoke the event that can trigger the direction change inside 
       // the moving state of the ball  
-			nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onChangeDirection, this, newDirection);
+			nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onChangeDirectionInStartScreen, this, newDirection);
     }
 
   }

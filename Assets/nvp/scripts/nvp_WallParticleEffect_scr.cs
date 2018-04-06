@@ -7,13 +7,20 @@ namespace newvisionsproject.zong.effects
 {
 	public class nvp_WallParticleEffect_scr : MonoBehaviour {
 
-		public ParticleSystem leftWallParticleSystem;
-		public ParticleSystem rightWallParticleSystem;
+		// +++ inpector fields ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		[SerializeField] ParticleSystem leftWallParticleSystem;
+		[SerializeField] ParticleSystem rightWallParticleSystem;
+
+
+
 
 		// +++ life cycle +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		void Start () {
 			nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, onBallHitsWall);
 		}
+
+
+
 
 		// +++ event handler ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 		void onBallHitsWall(object sender, object eventArgs){

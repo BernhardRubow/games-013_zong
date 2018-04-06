@@ -11,6 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95af686e4c7be4a45a7a304cc6bf54fc, type: 3}
   m_Name: ballConfigV1
   m_EditorClassIdentifier: 
-  startSpeed: 0
-  SpeedChange: 0
-  TimeUntilNewBallStarts: 0
+  startSpeed: 12
+  SpeedChange: 1
+  TimeUntilNewBallStarts: 2.5

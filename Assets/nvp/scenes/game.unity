@@ -237,6 +237,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxOffset: 13.72
   TargetXPos: 0
+--- !u!1 &598456340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 598456341}
+  - component: {fileID: 598456342}
+  m_Layer: 0
+  m_Name: effectExtensions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598456341
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598456340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1133933888}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &598456342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598456340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3585cc136579041a68c17440111ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &642120045
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +517,12 @@ Prefab:
       propertyPath: initialState
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114790365499025976, guid: 8916659b850e54c41875c675a5fa5913,
+        type: 2}
+      propertyPath: ballConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: da53d362a018f594a97c3b9ee2bbe7a3,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8916659b850e54c41875c675a5fa5913, type: 2}
   m_IsPrefabParent: 0
@@ -731,6 +777,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0c724beebba30e147b0a7ed691523b67, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1133933888 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4427563134998090, guid: 0c724beebba30e147b0a7ed691523b67,
+    type: 2}
+  m_PrefabInternal: {fileID: 1133933887}
 --- !u!1 &1256183025
 GameObject:
   m_ObjectHideFlags: 0

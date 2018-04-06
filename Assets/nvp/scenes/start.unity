@@ -1657,6 +1657,7 @@ GameObject:
   - component: {fileID: 1158481540}
   - component: {fileID: 1158481539}
   - component: {fileID: 1158481541}
+  - component: {fileID: 1158481542}
   m_Layer: 0
   m_Name: SceneObjectExtensions
   m_TagString: Untagged
@@ -1711,6 +1712,17 @@ MonoBehaviour:
   to: {r: 0.74264705, g: 0, b: 0.2612069, a: 1}
   duration: 5
   image: {fileID: 1839617606}
+--- !u!114 &1158481542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1158481538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d3585cc136579041a68c17440111ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1202250153
 GameObject:
   m_ObjectHideFlags: 0
