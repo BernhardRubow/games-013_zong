@@ -20,20 +20,30 @@ public class nvp_StartScene_scr : MonoBehaviour {
 	}
 
 	void Update () {
-
-		// break condition to load new scene
-		if(Input.touchCount > 0){
-			SceneManager.LoadScene("game");
-		}
-
 		// rotate center image
 		_mainImage.Rotate(Vector3.forward, _rotationSpeed * Mathf.Sin(Time.realtimeSinceStartup/2) * Time.deltaTime);
 	}
 
+
+
+
+	// +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 	void PlayRandomSound(){
 		var source = this.GetComponent<AudioSource>();
 		source.clip = backgroundMusics[Random.Range(0, backgroundMusics.Length)];
 		source.Play();
 		Invoke("PlayRandomSound", source.clip.length + 0.5f);
+	}
+
+
+
+
+	// +++ UI Callbacks +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	public void OnCreditsClicked(){
+		SceneManager.LoadScene("credits");
+	}
+
+	public void OnZongClicked(){		
+		SceneManager.LoadScene("game");
 	}
 }
