@@ -19,6 +19,8 @@ now no longer cares about the 'how' of getting the player input. It's only using
 This opens the class for changes because now its very easy to inject another IPlayerInput-Implementation maybe
 for playing against a computer ai.
 
+# Other Software Design Patterns
+
 ## Observer Pattern
 For Example, the nvp_UiManager_scr subscribes to the 'onPlayerScored' to be informed
 when the ball goes out of bounds. This event is invoked by the nvp_GameManager_scr and 
