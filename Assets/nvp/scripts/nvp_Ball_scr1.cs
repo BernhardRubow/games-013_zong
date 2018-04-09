@@ -9,7 +9,7 @@ namespace newvisionsproject.zong
   /**
   * This class is responsible for bringing the ball to
   * live. It the class untiy accesses in the game. */
-  public class nvp_Ball_scr : MonoBehaviour
+  public class nvp_Ball_scr1 : MonoBehaviour
   {
 
     // +++ public fields ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
