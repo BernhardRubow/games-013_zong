@@ -13,3 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startSpeed: 12
   SpeedChange: 1
+  TimeUntilNewBallStarts: 2.5
