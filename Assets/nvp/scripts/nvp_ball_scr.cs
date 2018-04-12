@@ -38,10 +38,7 @@ namespace newvisionsproject.zong
 
     void OnTriggerEnter(Collider other)
     {
-      switch(other.tag){
-        case "wall":
-          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsWall, this, null);
-        break;
+      switch(other.tag){        
         case "player":
           nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsPlayer, this, null);
         break;

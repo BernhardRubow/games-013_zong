@@ -49,6 +49,7 @@ namespace newvisionsproject.states.ball
     void OnBallHitsWall(object sender, object eventArgs)
     {
       currentDirection.x *= -1;
+      nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsWall, ballScript, null);
     }
 
     void OnChangeDirectionByEvent(object sender, object eventArgs){
@@ -80,7 +81,6 @@ namespace newvisionsproject.states.ball
 
       // subscribe to interesting events
       if(nvp_EventManager_scr.INSTANCE != null) {
-        nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
         nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
         nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onChangeDirectionInStartScreen, OnChangeDirectionByEvent);
       }
@@ -97,6 +97,8 @@ namespace newvisionsproject.states.ball
       // move the ball
       ballTransform.Translate(currentDirection * currentSpeed * Time.deltaTime, Space.World);
 
+      CheckForWallHit();
+
       // check possible state transitions
       CheckTransitionTo_OutOfBoundsState();
     }
@@ -107,7 +109,6 @@ namespace newvisionsproject.states.ball
 
       // unsubscribe form former subscribtions to particular events
       if(nvp_EventManager_scr.INSTANCE != null){
-        nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsWall, OnBallHitsWall);
         nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onBallHitsPlayer, OnBallHitsPlayer);
         nvp_EventManager_scr.INSTANCE.UnsubscribeFromEvent(GameEvents.onChangeDirectionInStartScreen, OnChangeDirectionByEvent);
       }
@@ -132,6 +133,17 @@ namespace newvisionsproject.states.ball
 
         // transition to next ball state
         ballScript.State = OnExitTo(BallStates.outOfBounds).SetAsNextState();
+      }
+    }
+
+    void CheckForWallHit(){
+      if(Mathf.Abs(ballTransform.position.x) > 15.3){
+        ballTransform.position = new Vector3(
+          15.3f * Mathf.Sign(ballTransform.position.x),
+          ballTransform.position.y,
+          ballTransform.position.z
+        );
+        OnBallHitsWall(this, null);
       }
     }     
 
