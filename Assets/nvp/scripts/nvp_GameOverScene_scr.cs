@@ -38,7 +38,7 @@ public class nvp_GameOverScene_scr : MonoBehaviour {
 			.Insert(2.8f, player2LosingText.transform.DOMove(Vector3.zero, 3f, true))
 			.Insert(2.8f, player2LosingText.transform.DORotate(new Vector3(0f, 0f, 180f + 360f * 3), 3f, RotateMode.FastBeyond360))
 			.Insert(5.6f, player2LosingText.transform.DOMove(new Vector3(0f, 22.5f, 0f), 0.5f, true).SetEase(Ease.OutBounce))
-			.AppendInterval(2f)
+			.AppendInterval(0.5f)
 			.OnComplete(OnComplete);
 	}
 
@@ -50,7 +50,7 @@ public class nvp_GameOverScene_scr : MonoBehaviour {
 			.Insert(2.8f, player1LosingText.transform.DOMove(Vector3.zero, 3f, true))
 			.Insert(2.8f, player1LosingText.transform.DORotate(new Vector3(0f, 0f, 360f * 3), 3f, RotateMode.FastBeyond360))
 			.Insert(5.6f, player1LosingText.transform.DOMove(new Vector3(0f, -22.5f, 0f), 0.5f, true).SetEase(Ease.OutBounce))
-			.AppendInterval(2f)
+			.AppendInterval(0.5f)
 			.OnComplete(OnComplete);
 	}
 
