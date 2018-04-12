@@ -131,7 +131,7 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &65610440553660584
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -169,7 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8130b948159c404e9330849858be346, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballConfig: {fileID: 11400000, guid: 6f284797fef887c4d9baef2dcef555ff, type: 2}
+  initialState: 0
+  ballConfig: {fileID: 11400000, guid: da53d362a018f594a97c3b9ee2bbe7a3, type: 2}
 --- !u!198 &198888540022242138
 ParticleSystem:
   m_ObjectHideFlags: 1
