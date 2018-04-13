@@ -69,13 +69,15 @@ namespace newvisionsproject.zong
     // +++ methods ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     IEnumerator ShowScore(PlayerScore playerScore, float delay)
     {
-      yield return new WaitForSeconds(delay);
-
       nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onPlayScoringSound, this, null);
+      
+      yield return new WaitForSeconds(delay);     
 
+      nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onPlayMagicSound, this, null);
       if (playerScore.PlayerNo == 1)
       {
         playerOneScoreDisplay.text = playerScore.Score.ToString("00");
+        
         
         // play all score effects for lower player
         foreach(IEffect effect in lowerPlayerScoreEffects) effect.Play();

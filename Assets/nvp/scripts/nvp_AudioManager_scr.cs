@@ -14,6 +14,9 @@ public class nvp_AudioManager_scr : MonoBehaviour {
 	[SerializeField] AudioClip[] wallBounce;
 	[SerializeField] AudioClip playerBounce;
 	[SerializeField] AudioClip[] playerScores;
+	[SerializeField] AudioClip[] magicsounds;
+	
+	
 
 
 
@@ -24,6 +27,8 @@ public class nvp_AudioManager_scr : MonoBehaviour {
 		nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsWall, onBallHitsWall);
 		nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onBallHitsPlayer, onBallHitsPlayer);
 		nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onPlayScoringSound, onPlayScoringSound);
+		nvp_EventManager_scr.INSTANCE.SubscribeToEvent(GameEvents.onPlayMagicSound, onPlayMagicSound);
+
 
 		effects.clip = wallBounce[Random.Range(0, wallBounce.Length)];
 	}
@@ -45,8 +50,12 @@ public class nvp_AudioManager_scr : MonoBehaviour {
 	}
 
 	void onPlayScoringSound(object sender, object eventArgs){
-		scoringSound.clip = playerScores[Random.Range(0, playerScores.Length)];		
+		scoringSound.clip = playerScores[0];		
 		scoringSound.pitch = 1 + Random.Range(-0.1f, 0.1f);
 		scoringSound.Play();
+	}
+
+	void onPlayMagicSound(object sender, object eventArgs){
+		AudioSource.PlayClipAtPoint(magicsounds[Random.Range(0, magicsounds.Length)], Camera.main.transform.position);
 	}
 }

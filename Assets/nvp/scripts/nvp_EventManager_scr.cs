@@ -16,6 +16,7 @@ namespace newvisionsproject.managers.events
     onSpawnPowerUp,
     onPlayScoringSound,
     onChangeDirectionInStartScreen,
+    onPlayMagicSound,
   }
 
   public class nvp_EventManager_scr : MonoBehaviour

@@ -962,7 +962,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f623a0fb27d24e47af5e651e7ea5508, type: 3}
   playerBounce: {fileID: 8300000, guid: b00addfb9fb18f746a5906da6312624d, type: 3}
   playerScores:
-  - {fileID: 8300000, guid: f7675131fd5fdd24bbff3885444694dc, type: 3}
+  - {fileID: 8300000, guid: b44a7c4ff7508054886c3b29710999ea, type: 3}
+  magicsounds:
+  - {fileID: 8300000, guid: 067e2d0848f4c52469a25ad9a53ac122, type: 3}
 --- !u!4 &1270370132
 Transform:
   m_ObjectHideFlags: 0
