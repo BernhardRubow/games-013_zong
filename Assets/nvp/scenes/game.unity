@@ -161,6 +161,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bfeaaffcf09336243a3a2dc3f3a58cf4, type: 2}
+    - target: {fileID: 65644271874856440, guid: 0b55abbf5cdbfed48bdb48af186cb703,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114491068099130322, guid: 0b55abbf5cdbfed48bdb48af186cb703, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 0b55abbf5cdbfed48bdb48af186cb703, type: 2}
@@ -522,6 +527,21 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 54978910651478114, guid: 8916659b850e54c41875c675a5fa5913,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 54978910651478114, guid: 8916659b850e54c41875c675a5fa5913,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 54978910651478114, guid: 8916659b850e54c41875c675a5fa5913,
+        type: 2}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8916659b850e54c41875c675a5fa5913, type: 2}
   m_IsPrefabParent: 0
@@ -684,6 +704,11 @@ Prefab:
     - target: {fileID: 1096838946816228, guid: 0b55abbf5cdbfed48bdb48af186cb703, type: 2}
       propertyPath: m_Name
       value: playerLower
+      objectReference: {fileID: 0}
+    - target: {fileID: 65644271874856440, guid: 0b55abbf5cdbfed48bdb48af186cb703,
+        type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114491068099130322, guid: 0b55abbf5cdbfed48bdb48af186cb703, type: 2}
@@ -969,7 +994,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9fb92071d0310d44972771a91020aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameConfig: {fileID: 11400000, guid: 19ef93ff1cbad4b49ae1c7aba716e9dc, type: 2}
+  gameConfig: {fileID: 11400000, guid: 2f1f88174fd40ec4dadd3cf363d02be0, type: 2}
 --- !u!4 &1342745642
 Transform:
   m_ObjectHideFlags: 0

@@ -43,7 +43,13 @@ namespace newvisionsproject.states.ball
     void OnBallHitsPlayer(object sender, object eventArgs)
     {
       currentDirection = DirectionLogic.CalcRandomBounceFromPlayer(currentDirection);    
-      currentSpeed += 1f;   
+      currentSpeed += 1f; 
+
+      ballTransform.position = new Vector3(
+        ballTransform.position.x,
+        ballConfig.rangeY * Mathf.Sign(ballTransform.position.y),
+        0f
+      );
     }
     
     void OnBallHitsWall(object sender, object eventArgs)
@@ -137,9 +143,9 @@ namespace newvisionsproject.states.ball
     }
 
     void CheckForWallHit(){
-      if(Mathf.Abs(ballTransform.position.x) > 15.3){
+      if(Mathf.Abs(ballTransform.position.x) > ballConfig.rangeX){
         ballTransform.position = new Vector3(
-          15.3f * Mathf.Sign(ballTransform.position.x),
+          ballConfig.rangeX * Mathf.Sign(ballTransform.position.x),
           ballTransform.position.y,
           ballTransform.position.z
         );

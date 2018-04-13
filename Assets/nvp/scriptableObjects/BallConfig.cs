@@ -8,5 +8,7 @@ public class BallConfig : ScriptableObject {
 	public float startSpeed;
 	public float SpeedChange;
 	public float TimeUntilNewBallStarts;
+	public float rangeX;
+	public float rangeY;
 	
 }
