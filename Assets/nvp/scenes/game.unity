@@ -261,6 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 598456341}
   - component: {fileID: 598456342}
+  - component: {fileID: 598456343}
   m_Layer: 0
   m_Name: effectExtensions
   m_TagString: Untagged
@@ -290,6 +291,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d3585cc136579041a68c17440111ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &598456343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598456340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2a9008bc5e2dca40942bb1c98940c90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &642120045

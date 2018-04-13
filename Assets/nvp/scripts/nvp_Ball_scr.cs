@@ -40,7 +40,7 @@ namespace newvisionsproject.zong
     {
       switch(other.tag){        
         case "player":
-          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsPlayer, this, null);
+          nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onBallHitsPlayer, this, other.transform);
         break;
         case "powerUpSpawner":
           nvp_EventManager_scr.INSTANCE.InvokeEvent(GameEvents.onHitPowerUpSpawner, this, null);
