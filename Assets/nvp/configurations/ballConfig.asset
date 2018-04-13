@@ -14,3 +14,5 @@ MonoBehaviour:
   startSpeed: 12
   SpeedChange: 1
   TimeUntilNewBallStarts: 2.5
+  rangeX: 15
+  rangeY: 0

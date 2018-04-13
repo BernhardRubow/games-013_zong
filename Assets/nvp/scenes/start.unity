@@ -6800,7 +6800,6 @@ GameObject:
   - component: {fileID: 1888620074}
   - component: {fileID: 1888620073}
   - component: {fileID: 1888620072}
-  - component: {fileID: 1888620071}
   - component: {fileID: 1888620077}
   m_Layer: 9
   m_Name: ball
@@ -6809,21 +6808,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1888620071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114214008343111616, guid: 8916659b850e54c41875c675a5fa5913,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1888620070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f936bdfd91ad4e49ab11132989a3009, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballParticleSystem: {fileID: 1877529357}
-  upperPlayerColor: {r: 0.74264705, g: 0, b: 0.2612069, a: 1}
-  lowerPlayerColor: {r: 0, g: 0.2345333, b: 0.9191176, a: 1}
 --- !u!114 &1888620072
 MonoBehaviour:
   m_ObjectHideFlags: 0

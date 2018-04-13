@@ -61,6 +61,9 @@ namespace newvisionsproject.states.ball
     void OnChangeDirectionByEvent(object sender, object eventArgs){
       this.currentDirection = (Vector3)eventArgs;        
       this.currentDirection.Normalize();
+      
+
+        Debug.Log(currentDirection);
     }
 
 
