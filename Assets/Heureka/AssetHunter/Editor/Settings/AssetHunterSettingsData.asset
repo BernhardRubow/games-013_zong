@@ -8,8 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b96cb3b06bdd8874481c4ba7495bbfba, type: 3}
-  m_Name: TextMoverConfig
+  m_Script: {fileID: 11500000, guid: 6221230a72e6c4546968c700f7f94254, type: 3}
+  m_Name: AssetHunterSettingsData
   m_EditorClassIdentifier: 
-  moveSpeed: 3
-  startAnmationY: 0
+  m_DirectoryExcludes: []
+  m_AssetTypeExcludes: []
+  m_AssetSubstringExcludes: []
+  m_AssetGUIDExcludes: []
+  m_MemoryCleanupActive: 0
